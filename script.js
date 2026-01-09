@@ -5,6 +5,20 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let isDragging = false;
 let previousMousePosition = { x: 0, y: 0 };
+let musicStarted = false;
+
+// Müzik çalma fonksiyonu
+function playMusic() {
+    if (!musicStarted) {
+        const music = document.getElementById('background-music');
+        music.play().then(() => {
+            musicStarted = true;
+            console.log('Müzik çalıyor');
+        }).catch(e => {
+            console.log('Müzik çalınamadı:', e);
+        });
+    }
+}
 
 // Sahne oluştur
 function init() {
@@ -52,13 +66,9 @@ function init() {
     createRightPhoto();
     createDecorations();
 
-    // Müzik çal
-    setTimeout(() => {
-        const music = document.getElementById('background-music');
-        music.play().catch(e => {
-            console.log('Müzik otomatik çalanamadı, kullanıcı etkileşimi bekleniyor');
-        });
-    }, 1000);
+    // İlk tıklamada müziği çal
+    document.addEventListener('click', playMusic, { once: false });
+    document.addEventListener('touchstart', playMusic, { once: false });
 
     // Event listeners
     window.addEventListener('resize', onWindowResize);
@@ -68,6 +78,10 @@ function init() {
     renderer.domElement.addEventListener('mouseup', onMouseUp);
 
     document.getElementById('loading').style.display = 'none';
+    
+    // Müziği hemen dene
+    playMusic();
+    
     animate();
 }
 
@@ -282,6 +296,9 @@ function createDecorations() {
 
 // Tıklama eventi
 function onMouseClick(event) {
+    // Müziği çal
+    playMusic();
+    
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -296,6 +313,7 @@ function onMouseClick(event) {
 
 function openMessage() {
     document.getElementById('message-overlay').classList.add('active');
+    playMusic(); // Mesaj açılınca da dene
 }
 
 function closeMessage() {
@@ -306,6 +324,7 @@ function closeMessage() {
 function onMouseDown(event) {
     isDragging = true;
     previousMousePosition = { x: event.clientX, y: event.clientY };
+    playMusic(); // Fare tıklanınca dene
 }
 
 function onMouseMove(event) {
