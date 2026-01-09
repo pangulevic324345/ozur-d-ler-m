@@ -209,50 +209,7 @@ function createApologyFrame() {
     frameGroup.name = 'apologyFrame';
     apologyFrame = frameGroup;
     scene.add(frameGroup);
-    // Bu fonksiyonu script.js içine ekle veya mevcut çerçeve kodunun sonuna yapıştır
-function createVisibleMessage() {
-    // Mesaj Panosu (Arka Plan)
-    const boardGeo = new THREE.PlaneGeometry(3, 2);
-    const boardMat = new THREE.MeshStandardMaterial({ 
-        color: 0xffffff, 
-        side: THREE.DoubleSide,
-        transparent: true,
-        opacity: 0.9 
-    });
-    const board = new THREE.Mesh(boardGeo, boardMat);
-    
-    // Panoyu masanın ortasına, biraz yukarıya yerleştiriyoruz
-    board.position.set(0, 3.5, -0.5); 
-    scene.add(board);
-
-    // Canvas üzerine yazı yazma (Bu teknik yazıyı 3D objeye çevirir)
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    canvas.width = 512;
-    canvas.height = 256;
-    
-    context.fillStyle = "white";
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    
-    context.font = "Bold 30px Arial";
-    context.fillStyle = "#c2185b"; // Pembe/Kırmızı tonu
-    context.textAlign = "center";
-    
-    // Mesaj içeriği (Burayı dilediğin gibi değiştirebilirsin)
-    context.fillText("Lütfen Beni Affet...", 256, 100);
-    context.font = "20px Arial";
-    context.fillText("Seni Çok Seviyorum ❤️", 256, 160);
-
-    const texture = new THREE.CanvasTexture(canvas);
-    const textMat = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
-    const textMesh = new THREE.Mesh(new THREE.PlaneGeometry(3, 1.5), textMat);
-    
-    textMesh.position.set(0, 3.5, -0.49); // Panonun hemen önünde durması için
-    scene.add(textMesh);
 }
-
-// init() fonksiyonunun içinde bu fonksiyonu çağırmayı unutma:
-// createVisibleMessage();
 
 // Sol köşe fotoğraf
 function createLeftPhoto() {
