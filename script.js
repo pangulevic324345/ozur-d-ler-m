@@ -384,3 +384,4 @@ function animate() {
 
 // Başlat
 window.addEventListener('load', init);
+}
