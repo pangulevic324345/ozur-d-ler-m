@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seni Çok Seviyorum 💕</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loading">Yükleniyor... 💕</div>
+    <div id="canvas-container"></div>
+    
+    <div id="instructions">
+        🕯️ Fareyle sahneyi döndürün | 💕 Çerçeveye tıklayın
+    </div>
+
+    <!-- Özür Mesajı Overlay -->
+    <div id="message-overlay">
+        <div class="message-content">
+            <h2>💕 Özür Dilerim Aşkım</h2>
+            <div class="apology-text">
+                <p>
+                    Biliyorum, seni üzdüm ve bu beni çok kötü hissettiriyor.
+                    Sen benim hayatımın en önemli parçasısın ve seni asla incitmek istemem.
+                    <br><br>
+                    Yaptığım hataları telafi etmek için elimden geleni yapmaya hazırım.
+                    Seni mutlu etmek, seni gülümsetmek istiyorum.
+                    Her şey seninle daha güzel, her şey seninle daha anlamlı.
+                    <br><br>
+                    Lütfen beni affet. Seni çok ama çok seviyorum.
+                    Sen benim her şeyimsin. 
+                    <br><br>
+                    <strong>--- BURAYA KENDİ ÖZÜR YAZINI YAZACAKSIN ---</strong>
+                    <br><br>
+                    Seni sonsuza kadar seveceğim. ❤️
+                </p>
+            </div>
+            <button class="close-btn" onclick="closeMessage()">💕 Kapat</button>
+        </div>
+    </div>
+
+    <audio id="background-music" loop>
+        <source src="assets/music/song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
